@@ -5,9 +5,7 @@ let count = 0;
 
 function toCleanActive() {
   sliderImg.forEach(el => {
-    if (el.className.includes('slider__item_active')) {
       el.classList.remove('slider__item_active')
-    }
   }
 )}
 
