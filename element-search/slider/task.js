@@ -3,7 +3,7 @@ const right = document.querySelector('.slider__arrow_next');
 const sliderImg = document.querySelectorAll('.slider__item');
 const sliderDots = document.querySelectorAll('.slider__dot')
 let count = 0;
-console.log(sliderDots);
+
 function toCleanActive() {
   sliderImg.forEach(el => {
     if (el.className.includes('slider__item_active')) {
@@ -18,12 +18,14 @@ function toCleanActive() {
 
 sliderDots.forEach((el, index) => el.onclick = (event) => {
   let current = event.target;
+  toCleanActive()
   sliderDots.forEach((el) => {
     if (el !== current) {
       el.classList.remove('slider__dot_active');
     }
   })
   el.classList.add('slider__dot_active');
+  sliderImg[index].classList.add('slider__item_active')
 })
 
 right.onclick = () => {
