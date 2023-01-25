@@ -11,9 +11,9 @@ function toCleanActive() {
     }
   }
   )
-  // sliderDots.forEach(el => {
-  //   el.classList.remove('slider__dot_active')
-  // })
+  sliderDots.forEach(el => {
+    el.classList.remove('slider__dot_active')
+  })
 }
 
 sliderDots.forEach((el, index) => el.onclick = (event) => {
@@ -30,11 +30,12 @@ right.onclick = () => {
   toCleanActive()
   count < sliderImg.length - 1 ? count++ : count = 0
   sliderImg[count].classList.add('slider__item_active')
-  // sliderDots[count].classList.add('slider__dot_active')
+  sliderDots[count].classList.add('slider__dot_active')
 }
 
 left.onclick = () => {
   toCleanActive();
   count > 0 ? count-- : count = sliderImg.length - 1;
   sliderImg[count].classList.add('slider__item_active')
+  sliderDots[count].classList.add('slider__dot_active')
 }
