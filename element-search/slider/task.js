@@ -16,11 +16,6 @@ function toCleanActive() {
 sliderDots.forEach((el, index) => el.onclick = (event) => {
   let current = event.target;
   toCleanActive()
-  sliderDots.forEach((el) => {
-    if (el !== current) {
-      el.classList.remove('slider__dot_active');
-    }
-  })
   el.classList.add('slider__dot_active');
   sliderImg[index].classList.add('slider__item_active')
 })

@@ -12,6 +12,5 @@ menuItem.forEach((el) => {
         e.stopPropagation();
       }    
     }
-    
   }
 })
