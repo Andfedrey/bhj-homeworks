@@ -4,7 +4,7 @@ class Game {
     this.wordElement = container.querySelector('.word');
     this.winsElement = container.querySelector('.status__wins');
     this.lossElement = container.querySelector('.status__loss');
-
+    this.timeElement = container.querySelector('.status__time');
     this.reset();
 
     this.registerEvents();
@@ -17,9 +17,10 @@ class Game {
   }
 
   registerEvents() {
+    this.setTime()
     window.addEventListener('keydown', 
       (event) => {
-        if(event.key === this.currentSymbol.textContent) {
+        if(event.key === this.currentSymbol.textContent ) {
           this.success()
         } else {
           this.fail()
@@ -54,7 +55,18 @@ class Game {
 
   setNewWord() {
     const word = this.getWord();
+    this.timeElement.textContent = word.length;
     this.renderWord(word);
+  }
+
+  setTime() {
+    setInterval(() => {
+      if(this.timeElement.textContent <= 0) {
+        this.fail()
+      } else {
+        this.timeElement.textContent--;
+      }
+    }, 1000);
   }
 
   getWord() {
@@ -72,7 +84,6 @@ class Game {
         'javascript'
       ],
       index = Math.floor(Math.random() * words.length);
-
     return words[index];
   }
 
