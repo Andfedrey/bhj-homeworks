@@ -1,7 +1,5 @@
 const tab = document.querySelectorAll('.tab');
-console.log(tab, ' tab');
 const tabContent = document.querySelectorAll('.tab__content')
-console.log(tabContent, ' content');
 
 function removeActive() {
   tab.forEach(el => {
