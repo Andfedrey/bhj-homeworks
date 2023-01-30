@@ -2,8 +2,6 @@ const fontsCollection = document.querySelectorAll('.font-size');
 const textColorCollection = document.querySelector('.book__control_color').querySelectorAll('.color')
 const bgColorCollection = document.querySelector('.book__control_background').querySelectorAll('.color')
 const bookContent = document.querySelector('.book__content');
-let bgColor = '';
-let textColor = ''
 
 fontsCollection.forEach(el => {
   el.onclick = (event) => {
@@ -67,7 +65,6 @@ bgColorCollection.forEach(el => {
       }
     })
     const bgColor = target.dataset.bgColor;
-
     if (bgColor === 'black') {
       bookContent.classList.remove('bg_color_gray')
       bookContent.classList.remove('bg_color_white')
