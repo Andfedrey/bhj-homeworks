@@ -15,9 +15,25 @@ function getNewTask(id, value) {
   </div>
 `
 }
+
+function clearingTask() {
+  return document.querySelectorAll('.task').forEach(el => {
+    el.onclick = ({ target }) => {
+      if (target.className === 'task__remove') {
+        console.log(target.parentElement);
+        target.parentElement.remove();
+        let allTask = document.querySelectorAll('.task__title');
+        let t = [...allTask].map(el => el.textContent.trim())
+        localStorage.setItem('tasks', JSON.stringify(t));
+      }
+    }
+  })
+}
+
 data?.forEach(el => {
   getNewTask(1, el)
 })
+
 inputTask.addEventListener('input', (e) => {
   value = e.target.value;
   let allTask = document.querySelectorAll('.task__title');
@@ -34,18 +50,7 @@ addTask.onclick = (event) => {
     inputTask.value = '';
   }
 
-  [...taskList.children]?.forEach(element => {
-    let task = element.querySelector('.task__remove');
-    task.onclick = ({ target }) => {
-      target.parentElement.remove();
-      localStorage.clear();
-      let allTask = document.querySelectorAll('.task__title');
-      let t = [...allTask].map(el => el.textContent.trim())
-      localStorage.setItem('tasks', JSON.stringify(t));
-    }
-  });
+  clearingTask()
 }
 
-
-
-
+clearingTask()
