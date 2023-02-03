@@ -29,10 +29,9 @@ addProduct.forEach(el => {
       <div class="cart__product-count">${count}</div>
       </div>
       `
-    } else if (checkId !== null) {
-      //Можно это как то более элегантно написать?
+    } else {
       let a = checkId.querySelector('.cart__product-count').innerHTML;
-      let sum = +a + +count;
+      let sum = Number(a) + Number(count);
       checkId.querySelector('.cart__product-count').innerHTML = sum
     }
     parentTarget.querySelector('.product__quantity-value').textContent = 1
