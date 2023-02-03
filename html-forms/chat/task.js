@@ -60,7 +60,7 @@ chatInput.addEventListener('keyup', (e) => {
     </div>
   `
     chatInput.value = '';
-    messageFromClien = ''
+    messageFromClien = '';
 
     chatMessage.innerHTML += `
     <div class="message">
