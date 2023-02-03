@@ -43,7 +43,7 @@ inputTask.addEventListener('input', (e) => {
 
 addTask.onclick = (event) => {
   event.preventDefault();
-  if (inputTask.value !== '') {
+  if (inputTask.value.trim() !== '') {
     let itemId = `Task_${count}`
     getNewTask(itemId, inputTask.value);
     count++;
