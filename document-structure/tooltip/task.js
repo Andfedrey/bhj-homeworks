@@ -1,6 +1,6 @@
 const hasTool = document.querySelectorAll('.has-tooltip');
 const toolActive = document.querySelectorAll('.tooltip_active');
-let activeFlag = true;
+let clickCounter = 0;
 
 hasTool.forEach((el) => {
   el.onclick = (e) => {
@@ -9,9 +9,11 @@ hasTool.forEach((el) => {
     const position = target.getBoundingClientRect();
     const positionTop = position.top;
     const positionLeft = position.left;
-    
-    if(activeFlag){
-    
+
+    if (target.nextElementSibling.className === 'tooltip tooltip_active') {
+      return target.nextElementSibling.remove()
+    }
+
     target.insertAdjacentHTML('afterend',
       `
         <div class="tooltip tooltip_active" 
@@ -19,14 +21,20 @@ hasTool.forEach((el) => {
           top:${positionTop}"px>
           ${e.target.title}
         </div>`);
-      
 
+    
     [...document.querySelectorAll('.tooltip')]
-    .forEach(el => {
+      .forEach(el => {
         if (el.textContent !== target.nextElementSibling.textContent) {
           el.remove();
         }
-      }
-      )
+      })
   }
 })
+
+window.onclick = ({ target }) => {
+  if (target.className !== 'has-tooltip' && document.querySelector('.tooltip')) {
+    document.querySelector('.tooltip').remove()
+  }
+}
+
