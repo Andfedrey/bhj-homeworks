@@ -9,18 +9,24 @@ hasTool.forEach((el) => {
     const position = target.getBoundingClientRect();
     const positionTop = position.top;
     const positionLeft = position.left;
-    console.log(position);
-    if (activeFlag) {
-      activeFlag = false;
-      target.insertAdjacentHTML('afterend', `
-      <div class="tooltip tooltip_active" 
-      style="left:${positionLeft}px;
-      top:${positionTop}"px>
-      ${e.target.title}
-      </div>`)
-    } else {
-      activeFlag = true;
-      document.querySelector('.tooltip').remove()
-    }
+    
+    if(activeFlag){
+    
+    target.insertAdjacentHTML('afterend',
+      `
+        <div class="tooltip tooltip_active" 
+          style="left:${positionLeft}px;
+          top:${positionTop}"px>
+          ${e.target.title}
+        </div>`);
+      
+
+    [...document.querySelectorAll('.tooltip')]
+    .forEach(el => {
+        if (el.textContent !== target.nextElementSibling.textContent) {
+          el.remove();
+        }
+      }
+      )
   }
 })
