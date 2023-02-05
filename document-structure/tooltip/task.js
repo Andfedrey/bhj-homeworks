@@ -10,7 +10,7 @@ hasTool.forEach((el) => {
     const positionTop = position.top;
     const positionLeft = position.left;
 
-    if (target.nextElementSibling.className === 'tooltip tooltip_active') {
+    if (target.nextElementSibling?.className === 'tooltip tooltip_active') {
       return target.nextElementSibling.remove()
     }
 
