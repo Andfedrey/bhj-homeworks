@@ -11,12 +11,13 @@ form.addEventListener('submit', (event) => {
   })
 
   xhr.open("POST", " https://students.netoservices.ru/nestjs-backend/auth")
+  xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
   xhr.send(JSON.stringify(info));
   checkRequest(xhr)
 })
 
 function checkRequest(req) {
-  if (req.status === 200) {
+  if (req.status >= 200 ) {
     document.querySelector('#signin').className = 'signin';
   } else {
     alert('Неверный логин/пароль')
