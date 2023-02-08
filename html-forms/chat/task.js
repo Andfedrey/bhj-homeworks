@@ -27,6 +27,7 @@ const answerBotList = [
 viewChat.addEventListener('click', () => {
   widget.classList.add('chat-widget_active');
   setInterval(() => {
+    console.log(messageFromClien);
     if (counter >= 30 && messageFromClien === '') {
       counter = 0;
       chatMessage.innerHTML += `
@@ -43,7 +44,7 @@ viewChat.addEventListener('click', () => {
 chatInput.addEventListener('input', (e) => {
   e.preventDefault();
   messageTimeClient = `${date.getHours()}:${date.getMinutes()}`;
-  messageFromClien = `${e.target.value}`;
+  messageFromClien = e.target.value.trim();
 })
 
 function random(arr) {

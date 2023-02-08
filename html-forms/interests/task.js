@@ -1,10 +1,11 @@
 const interests = document.querySelectorAll('.interest__check')
-interests.forEach(el => {
-  addEventListener('change', ({target}) => {
-    target.checked = el
-    const childrenUpdate = el.closest('li').querySelector('ul')?.querySelectorAll('input');
-    childrenUpdate?.forEach(child => child.checked = el.checked )
-  })
 
+function getCheckedUpdate(info, arr) {
+  return info ? arr?.forEach(el => el.checked = true) : arr?.forEach(el => el.checked = false)
+}
+
+addEventListener('change', ({ target }) => {
+  const childrenUpdate = target.closest('.interest').children[1]?.querySelectorAll('.interest__check');
+  getCheckedUpdate(target.checked, childrenUpdate)
 })
 
