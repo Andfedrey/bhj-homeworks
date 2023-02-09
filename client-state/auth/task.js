@@ -8,13 +8,15 @@ function sendData(payload) {
   xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
   xhr.responseType = 'json'
   xhr.send(JSON.stringify(payload));
-}
 
-xhr.onload = function() {
+  xhr.onload = function () {
     welcomeUser.classList.add('welcome_active')
     let resposeObj = xhr.response;
     document.getElementById('user_id').outerText = resposeObj.user_id;
+  }
 }
+
+
 
 function formSend(event) {
   event.preventDefault()
